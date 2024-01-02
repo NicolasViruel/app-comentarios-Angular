@@ -1,0 +1,95 @@
+<br>
+<div class="container">
+    <!-- Titulo de noticia -->
+    <div class="card">
+        <div class="card-content">
+          <p class="title">
+            “ Angular es un Framework para construccion de sitios SPA creado por Google”
+          </p>
+          <p class="subtitle">
+            Nicolas Viruel
+          </p>
+        </div>
+        <footer class="card-footer">
+          <p class="card-footer-item">
+            <span>
+              View on <a href="https://twitter.com/codinghorror/status/506010907021828096">Twitter</a>
+            </span>
+          </p>
+          <p class="card-footer-item">
+            <span>
+              Share on <a href="https://www.facebook.com/">Facebook</a>
+            </span>
+          </p>
+        </footer>
+    </div>
+
+    <br>
+    <!-- Comentarios -->
+    <article class="media" *ngFor="let coment of comentarios; let num = index">
+        <figure class="media-left">
+          <p class="image is-64x64">
+            <img src="{{coment.imagen}}">
+          </p>
+        </figure>
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong>{{coment.nombre}} </strong> <small>{{coment.alias}} </small> <small><em>{{coment.tiempo}}</em></small>
+              <br>
+              {{coment.comentario}}
+            </p>
+          </div>
+          <nav class="level is-mobile">
+            <div class="level-left">
+              <a class="level-item">
+                <span class="icon is-small"><i class="fas fa-reply"></i></span>
+              </a>
+              <a class="level-item">
+                <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+              </a>
+              <a class="level-item">
+                <span class="icon is-small"><i class="fas fa-heart"></i></span>
+              </a>
+            </div>
+          </nav>
+        </div>
+        <div class="media-right">
+          <button class="delete" (click)="eliminar(coment._id)"></button>
+        </div>
+      </article>
+
+      <br>
+      <!-- Formulario -->
+      <article class="media">
+        <figure class="media-left">
+          <p class="image is-64x64">
+            <img src="../../../assets/imagen1.jpg">
+          </p>
+        </figure>
+        <div class="media-content">
+            <div class="field">
+                <div class="control">
+                    <!-- ngChangeModel refresca el contenido del imput -->
+                    <input class="input" type="text" [(ngModel)]="nombre" (ngModelChange)="nombre = $event" placeholder="Nombre">
+                </div>
+            </div>
+          <div class="field">
+            <p class="control">
+              <textarea class="textarea" [(ngModel)]="comentario" (ngModelChange)="comentario = $event" placeholder="Agrega un comentario..."></textarea>
+            </p>
+          </div>
+          <nav class="level">
+            <div class="level-left">
+              <div class="level-item">
+                <a class="button is-info" (click)="agregarComentario()">Enviar</a>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </article>
+      <br>
+
+
+</div>
+
